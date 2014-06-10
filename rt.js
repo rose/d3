@@ -14,6 +14,18 @@ var circles =
   .enter()
   .append("circle");
 
+var text = 
+  viewport
+  .selectAll(".text_content")
+  .data(words)
+  .enter()
+  .append("text")
+  .text(function(d,i) { return d; } )
+  .attr("y", function(d,i) {
+    return i * 50 + 30;
+  })
+  .attr("x", 25)
+
 var style = 
   circles
   .attr("cy", function(d,i) {
@@ -25,6 +37,8 @@ var style =
   })
   .style("fill", "green");
   
+  
+/*
 var effects = 
   circles
   .on("mouseover", function(d, i) {
@@ -36,3 +50,4 @@ var effects =
     .attr("x", 25)
     .text(function(data) { return d; })
   });
+ */
