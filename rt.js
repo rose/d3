@@ -25,21 +25,14 @@ var style =
   })
   .style("fill", "green");
   
-var text = viewport.selectAll(".text")
-  .data(words)
-  .enter()
-  .append("text")
-  .attr("y", function(d,i) {
-    return i * 50 + 30;
-  })
-  .attr("x", 25)
-  .text(function(d) { return d; })
-  .attr("fg", "red")
-
-//var effects = 
-  //circles
-  //.on("mouseover", function(d, i) {
-    //d3.select(this)
-    //.insert("text")
-    //.text(d);
-  //});
+var effects = 
+  circles
+  .on("mouseover", function(d, i) {
+    d3.select("svg")
+    .append("text")
+    .attr("y", function(data, index) {
+      return i * 50 + 30;
+    })
+    .attr("x", 25)
+    .text(function(data) { return d; })
+  });
