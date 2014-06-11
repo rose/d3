@@ -12,7 +12,11 @@ for (var i = 0; i < labels.length; i++) {
   }
   nodes[labels[i]] = {
     name: labels[i],
-    parent: parent
+    parent: parent,
+    colour: "#"
+      + Math.floor(Math.random() * 4 + 4).toString(16)
+      + Math.floor(Math.random() * 6 + 10).toString(16)
+      + Math.floor(Math.random() * 4 + 4).toString(16)
   }
 }
 
@@ -24,7 +28,8 @@ for (var i = 0; i < labels.length; i++) {
     links.push({
       source: child.parent.name,
       target: child.name,
-      type: "suit"
+      type: "suit",
+      colour: child.colour
     });
   }
 }
@@ -65,7 +70,10 @@ var node = svg.selectAll(".node")
     .call(force.drag);
 
 node.append("circle")
-    .attr("r", 8);
+    .attr("r", 8)
+    .style("fill", function(d) {
+      return d.colour;
+    });
 
 node.append("text")
     .attr("x", 12)
