@@ -26,19 +26,13 @@ for (var i = 0; i < labels.length; i++) {
   var child = nodes[labels[i]];
   if (child.parent) {
     links.push({
-      source: child.parent.name,
-      target: child.name,
+      source: child.parent,
+      target: child,
       type: "suit",
       colour: child.colour
     });
   }
 }
-
-// Compute the distinct nodes from the links.
-links.forEach(function(link) {
-  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
-  link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
-});
 
 var width = 960,
     height = 500;
