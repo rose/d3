@@ -1,5 +1,5 @@
 
-var labels = ["hello", "world", "this", "is", "a", "text"];
+var labels = "hello world this is a test of much more text than was used before".split(" ");
 
 var nodes = {};
 
