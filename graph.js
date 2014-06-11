@@ -58,8 +58,11 @@ var svg = d3.select("body").append("svg")
 
 var link = svg.selectAll(".link")
     .data(force.links())
-  .enter().append("line")
-    .attr("class", "link");
+    .enter().append("line")
+    .attr("class", "link")
+    .style("stroke", function(d) {
+      return d.colour;
+    });
 
 var node = svg.selectAll(".node")
     .data(force.nodes())
