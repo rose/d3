@@ -28,7 +28,6 @@ for (var i = 0; i < labels.length; i++) {
     links.push({
       source: child.parent,
       target: child,
-      type: "suit",
       colour: child.colour
     });
   }
@@ -60,7 +59,7 @@ var link = svg.selectAll(".link")
 
 var node = svg.selectAll(".node")
     .data(force.nodes())
-  .enter().append("g")
+    .enter().append("g")
     .attr("class", "node")
     .on("mouseover", mouseover)
     .on("mouseout", mouseout)
@@ -68,6 +67,16 @@ var node = svg.selectAll(".node")
 
 node.append("circle")
     .attr("r", 8)
+    .style("stroke", function(d) {
+      if (d.parent === undefined) {
+        return "black";
+      }
+    })
+    .style("stroke-width", function(d) {
+      if (d.parent === undefined) {
+        return "1px";
+      }
+    })
     .style("fill", function(d) {
       return d.colour;
     });
